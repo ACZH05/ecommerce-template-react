@@ -1,10 +1,5 @@
 import 'bootstrap/dist/css/bootstrap.css'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import {Container, Nav, Navbar, NavDropdown, Button, Card, Row, Col} from 'react-bootstrap';
 import { BsCart } from 'react-icons/bs'
 
 function NavBar() {
@@ -52,7 +47,7 @@ function Header() {
 
 function ItemCard({ title, price, itemSold}) {
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem' }} className='mb-5'>
       <Card.Img variant='top' src='src/assets/dummy-img.jpg'/>
       <Card.Body>
         <Card.Title>{ title }</Card.Title>
@@ -66,12 +61,56 @@ function ItemCard({ title, price, itemSold}) {
   )
 }
 
+function ItemList({ itemDetails }) {
+  return (
+    <Row xs={1} md={4} className="g-3 m-5">
+      { itemDetails.map((element, index) => (
+        <Col key={index}>
+          <ItemCard title={element.title} price={element.price} itemSold={element.itemSold} />
+        </Col>
+      ))}
+    </Row>
+  )
+}
+
+const itemDetails = [
+  {
+    title: "T-shirt",
+    price: "5.00",
+    itemSold: 10
+  },
+
+  {
+    title: "Long-sleved shirt",
+    price: "17.00",
+    itemSold: 30
+  },
+
+  {
+    title: "Shorts",
+    price: "5.00",
+    itemSold: 20
+  },
+  
+  {
+    title: "Jean",
+    price: "23.00",
+    itemSold: 40
+  },
+
+  {
+    title: "Tie",
+    price: "10.00",
+    itemSold: 33
+  }
+]
+
 function App() {
   return (
     <div>
       <NavBar />
       <Header />
-      <ItemCard title={"T-shirt"} price={'5.00'} itemSold={10} />
+      <ItemList itemDetails={itemDetails}/>
     </div>
   )
 }
