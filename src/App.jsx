@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
 import { BsCart } from 'react-icons/bs'
 
 function NavBar() {
@@ -49,11 +50,28 @@ function Header() {
   )
 }
 
+function ItemCard({ title, price, itemSold}) {
+  return (
+    <Card style={{ width: '18rem' }}>
+      <Card.Img variant='top' src='src/assets/dummy-img.jpg'/>
+      <Card.Body>
+        <Card.Title>{ title }</Card.Title>
+        <Card.Text>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce in risus sapien. Vestibulum elementum enim turpis, eu pretium tortor porttitor imperdiet.</Card.Text>
+        <div className="d-flex justify-content-between">
+          <Card.Text>RM { price }</Card.Text>
+          <Card.Text>{ itemSold } Sold</Card.Text>
+        </div>
+      </Card.Body>
+    </Card>
+  )
+}
+
 function App() {
   return (
     <div>
       <NavBar />
       <Header />
+      <ItemCard title={"T-shirt"} price={'5.00'} itemSold={10} />
     </div>
   )
 }
