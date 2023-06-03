@@ -40,10 +40,20 @@ function NavBar() {
   )
 }
 
+function Header() {
+  return (
+    <div className='text-center container-fluid bg-dark text-light py-5'>
+      <div className='fs-1'>Shop in style</div>
+      <div className='fs-5'>Lorem ipsum dolor sit amet.</div>
+    </div>
+  )
+}
+
 function App() {
   return (
     <div>
       <NavBar />
+      <Header />
     </div>
   )
 }
